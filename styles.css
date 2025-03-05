@@ -1,0 +1,56 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f4f8;
+}
+
+img {
+    width: 600px; /* Increased size of the logo */
+    margin-bottom: 5px;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    background-color: #2d87f0;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 15px 0;
+    width: 250px; /* Make the list items a consistent width */
+}
+
+a {
+    display: block; /* Ensure the link occupies the full width */
+    font-size: 1.3rem;
+    color: #2d87f0;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    width: 100%; /* Ensure the link takes up the full width of the list item */
+}
+
+a:hover {
+    background-color: #2d87f0;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
