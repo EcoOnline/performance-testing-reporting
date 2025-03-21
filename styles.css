@@ -54,3 +54,21 @@ a:hover {
     color: #ffffff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+
+#results-list {
+    max-height: 300px; /* Limit the height */
+    overflow-y: auto; /* Add vertical scroll when content overflows */
+    border: 1px solid #ddd; /* Optional: adds a subtle border */
+    padding: 10px;
+    list-style-type: none; /* Optional: removes default list styling */
+}
+
+/* Optional: Style list items for better visibility */
+#results-list li {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#results-list li:last-child {
+    border-bottom: none; /* Remove border from last item */
+}
