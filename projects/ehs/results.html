@@ -1,45 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Dynamic Results List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoOnline Performance Testing</title>
+    <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
-  <h1>Available Results</h1>
-  <ul id="resultsList">
+    <img src="../../logo.png" alt="EcoOnline Logo">
+    <h1>Performance Testing</h1>
+    <ul id="results-list">
+        <!-- List items will be populated here -->
     </ul>
 
-  <script>
-    async function fetchResults() {
-      const resultsList = document.getElementById('resultsList');
-      const baseUrl = 'results/'; // Path to your results folder
+    <script>
+        // Fetch and render results from index.json
+        fetch('index.json')
+            .then(response => response.json())
+            .then(data => {
+                const list = document.getElementById('results-list');
+                data.forEach(file => {
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = `results/${file}`;
+                    link.textContent = formatDateFromFilename(file);
+                    listItem.appendChild(link);
+                    list.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error loading results:', error));
 
-      let fileNumber = 1;
-      while (true) {
-        const fileName = `${fileNumber}.html`;
-        const filePath = baseUrl + fileName;
-
-        try {
-          const response = await fetch(filePath, { method: 'HEAD' }); // Check if the file exists
-          if (response.ok) {
-            const listItem = document.createElement('li');
-            const link = document.createElement('a');
-            link.href = filePath;
-            link.textContent = fileName;
-            listItem.appendChild(link);
-            resultsList.appendChild(listItem);
-            fileNumber++;
-          } else {
-            // File not found, assume no more files
-            break;
-          }
-        } catch (error) {
-          console.error('Error fetching file:', error);
-          break; // Stop fetching if there's an error (e.g., network issue)
+        // Helper function to format date from filename
+        function formatDateFromFilename(filename) {
+            const match = filename.match(/(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})/);
+            if (match) {
+                const [_, year, month, day, hour, minute] = match;
+                return `${day}/${month}/${year} - ${hour}:${minute}`;
+            }
+            return filename; // Fallback if filename isn't in expected format
         }
-      }
-    }
-
-    fetchResults();
-  </script>
+    </script>
 </body>
 </html>
