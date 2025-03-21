@@ -22,7 +22,7 @@
                 data.forEach(file => {
                     const listItem = document.createElement('li');
                     const link = document.createElement('a');
-                    link.href = `results/${file}`;
+                    link.href = `${file}`;
                     link.textContent = formatDateFromFilename(file);
                     listItem.appendChild(link);
                     list.appendChild(listItem);
