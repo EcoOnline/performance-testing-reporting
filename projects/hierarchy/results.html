@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoOnline Performance Testing</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <img src="../../logo.png" alt="EcoOnline Logo">
+    <h1>Hierarchy Service performance testing results</h1>
+    <ul id="results-list">
+        <!-- List items will be populated here -->
+    </ul>
+
+    <script>
+        // Fetch and render results from index.json
+        fetch('index.json')
+            .then(response => response.json())
+            .then(data => {
+                const list = document.getElementById('results-list');
+
+                if (data.length === 0) {
+                    list.innerHTML = '<li>No results available</li>';
+                    return;
+                }
+
+                // Sort files by timestamp in descending order
+                data.sort((a, b) => extractTimestamp(b) - extractTimestamp(a));
+
+                data.forEach(file => {
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = `${file}`;
+                    link.textContent = formatDateFromFilename(file);
+                    listItem.appendChild(link);
+                    list.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error loading results:', error));
+
+        // Helper function to extract timestamp for sorting
+        function extractTimestamp(filename) {
+            const match = filename.match(/(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})/);
+            if (match) {
+                return new Date(`${match[1]}-${match[2]}-${match[3]}T${match[4]}:${match[5]}:${match[6]}`).getTime();
+            }
+            return 0; // fallback for non-matching filenames
+        }
+
+        // Helper function to format date from filename
+        function formatDateFromFilename(filename) {
+            const match = filename.match(/(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})/);
+            if (match) {
+                const [_, year, month, day, hour, minute] = match;
+                return `${day}/${month}/${year} - ${hour}:${minute}`;
+            }
+            return filename; // Fallback if filename isn't in expected format
+        }
+    </script>
+</body>
+</html>
