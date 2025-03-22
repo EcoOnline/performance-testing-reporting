@@ -37,7 +37,10 @@
                     list.appendChild(listItem);
                 });
             })
-            .catch(error => console.error('Error loading results:', error));
+            .catch(error => {
+                console.error('Error loading results:', error);
+                document.getElementById('results-list').innerHTML = '<li>No results available yet</li>';
+            });
 
         // Helper function to extract timestamp for sorting
         function extractTimestamp(filename) {
