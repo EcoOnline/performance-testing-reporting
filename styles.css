@@ -2,38 +2,44 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Ensures content is aligned at the top */
     align-items: center;
     height: 100vh;
     margin: 0;
+    padding: 0; /* Ensure no padding around the body */
     background-color: #f0f4f8;
 }
 
 img {
-    width: 600px; /* Increased size of the logo */
-    margin-bottom: 5px;
+    width: 400px; /* Increased size of the logo */
+    margin-top: 0; /* Ensure no margin at the top */
+    margin-bottom: 10px; /* Small space between logo and h1 */
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 1.5rem;
     color: #ffffff;
     text-align: center;
     padding: 20px;
     background-color: #2d87f0;
-    border-radius: 10px;
-    margin-bottom: 30px;
+    margin: 0; /* Removed margin to keep it right at the top */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100vw; /* Ensure it spans the full width of the page */
+    max-width: 100%; /* Prevent overflow */
+    box-sizing: border-box; /* Keep padding inside the width */
+    overflow: hidden; /* Ensure nothing sneaks out */
+    border-radius: 0; /* Removed rounded corners */
 }
 
 ul {
     list-style-type: none;
     padding: 0;
-    margin: 0;
+    margin: 20px 0 0 0; /* Space below h1 */
 }
 
 li {
     margin: 15px 0;
-    width: 250px; /* Make the list items a consistent width */
+    width: 300px; /* Ensure the list items have consistent width */
 }
 
 a {
