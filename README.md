@@ -1,0 +1,7 @@
+# performance-testing-reporting
+
+project for centralised performance testing reporting website (https://ecoonline.github.io/performance-testing-reporting/)
+
+it is using GitHub Pages, it gets built and published, everytime we push anything into main branch of this repository
+
+we are pushing results for indyvidual projects via their indyvidual pipelines (for example, see https://github.com/EcoOnline/ehs-test-performance/actions)
