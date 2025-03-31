@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
-    <img src="../../logo.png" alt="EcoOnline Logo">
+    <img id="logo" src="../../logo.png" alt="EcoOnline Logo" style="cursor: pointer;">
     <h1>Munio performance testing results</h1>
     <ul id="results-list">
         <!-- List items will be populated here -->
@@ -60,6 +60,10 @@
             }
             return filename; // Fallback if filename isn't in expected format
         }
+
+        document.getElementById('logo').addEventListener('click', function() {
+            window.location.href = '../../index.html'; // Redirect to index.html
+        });
     </script>
 </body>
 </html>

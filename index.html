@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <img src="logo.png" alt="EcoOnline Logo">
+    <img id="logo" src="logo.png" alt="EcoOnline Logo" style="cursor: pointer;">
+    
     <h1>Performance Testing - select project</h1>
     <ul>
         <li><a href="projects/ehs/results.html">EHS</a></li>
@@ -16,7 +17,14 @@
         <li><a href="projects/chemicalmanager/results.html">Chemical Manager</a></li>
         <li><a href="projects/sypol/results.html">Sypol</a></li>
         <li><a href="projects/munio/results.html">Munio</a></li>
+        <li><a href="projects/ecometrica/results.html">Ecometrica</a></li>
         <li><a href="projects/hierarchy/results.html">Hierarchy Service</a></li>
     </ul>
+
+    <script>
+        document.getElementById('logo').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
 </html>
